@@ -44,9 +44,13 @@ stimulus_response(analytical) :- job(evaluating);
                            job(investigating).
 
 % Own rule
-stimulus_response(entertainment) :- job(magician);
+stimulus_response('verbal-entertainment') :- job(magician);
                            job(presenter);
                            job(investigating).
+
+% Own rule
+stimulus_response('physical-entertainment') :- job(dancer);
+                           job(athlete).
                               
 % rule 9
 medium(workshop) :- stimulus_situation('physical object'),
@@ -83,8 +87,12 @@ medium('information technology') :- stimulus_situation(symbolic),
                     stimulus_response('hands-on'),
                     feedback(yes).
 
-medium('magician') :- stimulus_situation(people_orientated),
+medium(entertainment) :- stimulus_situation(people_orientated),
                     stimulus_response(entertainment),
+                    feedback(no).
+
+medium('Demonstrator') :- stimulus_situation(visual),
+                    stimulus_response(analytical),
                     feedback(no).
 
 
@@ -126,7 +134,10 @@ cleanInputs :-
     retractall(job(_)),
     retractall(feedback(_)).
 
-% job(lecturing)
-% New fact in prolog: assert(environment(manuals)). 
-% enviornment(E). will then return manuals.
-% stimulus_situation(X). will return X = verbal.
+% Running:
+% 1. go.
+% 2. Enter an environment (One that is in median)
+% 3. Enter a job also in median that has enviornemnt
+% 4. feedback yes or no
+% 5. Should display it's three links
+% e.g. env = pictures. job = reasoning. feedback = no.
