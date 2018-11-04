@@ -62,6 +62,7 @@ medium(tutorial) :- stimulus_situation(symbolic),
                     stimulus_response(analytical),
                     feedback(yes).
 
+% pictures. writing. no.
 % rule 11
 medium(videocassette) :- stimulus_situation(visual),
                     stimulus_response(documented),
@@ -87,8 +88,12 @@ medium('information technology') :- stimulus_situation(symbolic),
                     stimulus_response('hands-on'),
                     feedback(yes).
 
-medium(entertainment) :- stimulus_situation(people_orientated),
-                    stimulus_response(entertainment),
+medium('information technology') :- stimulus_situation(symbolic),
+                    stimulus_response('hands-on'),
+                    feedback(no).
+
+medium('entertainment-tutorial') :- stimulus_situation(people_orientated),
+                    stimulus_response('physical-entertainment'),
                     feedback(no).
 
 medium('Demonstrator') :- stimulus_situation(visual),
